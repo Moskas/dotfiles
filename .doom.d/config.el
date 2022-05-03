@@ -35,7 +35,7 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 (set-face-attribute 'default t :font  "Hack-8")
-(setq fancy-splash-image "/home/moskas/Downloads/emacs.png")
+(setq fancy-splash-image "~/.emacs.d/emacs.png")
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
