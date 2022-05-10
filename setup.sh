@@ -30,5 +30,5 @@ cp -r .config ~
 cp -r .doom.d ~
 cp -r .emacs.d ~
 
-./~/.emacs.d/bin/doom install
-./~/.emacs.d/bin/doom sync -u
+./$HOME/.emacs.d/bin/doom install
+./$HOME/.emacs.d/bin/doom sync -u
