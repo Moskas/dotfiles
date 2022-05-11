@@ -6,10 +6,12 @@ function temp() {
 cd ~/.temp;
 }
 # Installing software with pacman and aur helper
-sudo pacman -S git neovim emacs rust curl wget zathura zathura-pdf-mupdf zsh
+sudo pacman -S git neovim emacs rust curl wget zathura zathura-pdf-mupdf zsh discord
 
 git clone https://aur.archlinux.org/paru.git
 cd paru && makepkg -s -i
+
+paru -S brave-bin 
 
 temp
 
@@ -25,6 +27,10 @@ curl -sLf https://spacevim.org/install.sh | bash
 # Install ohmyzsh from official script
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# Install doom-emacs from repo
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
 # Getting .config from dotfiles
 cd ~/dotfiles/  # I will most likely run it from user home directory so no need for special path
 cp -r .config ~
@@ -33,5 +39,4 @@ cp -r .config ~
 cp -r .doom.d ~
 cp -r .emacs.d ~
 
-./$HOME/.emacs.d/bin/doom install
 ./$HOME/.emacs.d/bin/doom sync -u
