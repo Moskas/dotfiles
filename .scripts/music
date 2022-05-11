@@ -1,2 +1,26 @@
-echo "Test: $1"
+#!/bin/bash
+# Get the options
+while getopts ":hrlp" option; do
+   case $option in
+      h)
+        echo "Usage:"
+        echo "-h - displays list of possible arguments"
+        echo "-r - plays random tracks from all subfolders of ~/Music"
+        echo "-l - lists all subfolders of ~/Music"
+        echo "-p - plays tracks from selected folder example: music -p \"Some_album\""
+        exit;;
+      r)  # display Help
+        mpv $HOME/Music/*/* --shuffle --no-audio-display
+        exit;;
+      l)
+        exa -l $HOME/Music
+        exit;;
+      p)
+        mpv $HOME/Music/"$2"/* --shuffle --no-audio-display
+        exit;;
+      \?) # Option not supported
+        echo "Argument not supported"
+        exit;;
+   esac
+done
 
