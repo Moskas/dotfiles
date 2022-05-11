@@ -100,5 +100,13 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # for 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+# User exports
+export PATH=$HOME/.scripts:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
+export LC_ALL="en_US.utf-8"
+
+
 # Personal aliases
 alias ls='exa'
+#alias stream='$HOME/.scripts/stream.sh'
