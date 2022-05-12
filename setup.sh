@@ -8,6 +8,7 @@ cd ~/.temp;
 # Installing software with pacman and aur helper
 sudo pacman -S git neovim emacs rust curl wget zathura zathura-pdf-mupdf zsh discord bitwarden
 
+# Aur helper of choice
 git clone https://aur.archlinux.org/paru.git
 cd paru && makepkg -s -i
 
