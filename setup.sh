@@ -6,7 +6,7 @@ function temp() {
 cd ~/.temp;
 }
 # Installing software with pacman and aur helper
-sudo pacman -S git neovim emacs rust curl wget zathura zathura-pdf-mupdf zsh discord
+sudo pacman -S git neovim emacs rust curl wget zathura zathura-pdf-mupdf zsh discord bitwarden
 
 git clone https://aur.archlinux.org/paru.git
 cd paru && makepkg -s -i
@@ -39,4 +39,4 @@ cp -r .config ~
 cp -r .doom.d ~
 cp -r .emacs.d ~
 
-./$HOME/.emacs.d/bin/doom sync -u
+.$HOME/.emacs.d/bin/doom sync -u
