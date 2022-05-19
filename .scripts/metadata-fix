@@ -10,9 +10,13 @@ for x in *.$2; do
 done
 
 cd temp
-
 for y in *.$2; do
+    if [ "$2" = "mp3" ];
+    then
+    ffmpeg -i "$y" -c copy -metadata artist="$1" -metadata title="${y%.$2*}" "../${y%.$2*}.mp3" # Convert to mp3
+    else
     ffmpeg -i "$y" -acodec libmp3lame -metadata artist="$1" -metadata title="${y%.$2*}" "../${y%.$2*}.mp3" # Convert to mp3
+    fi
 done
 cd ..
 rm -r temp
