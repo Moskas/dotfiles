@@ -12,7 +12,7 @@ font:
   bold_italic:
     family: Hack
     style: Bold Italic
-  size: 10
+  size: 12
 # alacritty window settings
 window:
    dimensions:
