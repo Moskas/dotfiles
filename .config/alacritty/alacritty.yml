@@ -1,7 +1,7 @@
 # font settings
 font:
   normal:
-    family: Hack
+    family: "MesloLGS NF"
     style: Regular
   bold:
     family: Hack
@@ -12,7 +12,7 @@ font:
   bold_italic:
     family: Hack
     style: Bold Italic
-  size: 12
+  size: 10
 # alacritty window settings
 window:
    dimensions:
@@ -156,4 +156,4 @@ schemes:
       white:   '0xe6d5ae'
 
 # Apply the color scheme.
-colors: *gruvbox_material_medium_dark
+colors: *gruvbox_material_soft_dark
