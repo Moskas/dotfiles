@@ -1,0 +1,15 @@
+[global]
+    font = Hack 10
+    transparency = 50
+    
+    browser = /usr/bin/qutebrowser
+
+[frame]
+    width = 5
+    color = "#cc241d"
+
+[urgency_normal]
+    frame_color = "fb9434"
+    background = "cc241d"
+    foreground = "FF0000"
+    timeout = 15
