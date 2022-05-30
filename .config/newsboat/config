@@ -1,0 +1,2 @@
+include ~/.config/newsboat/gruvbox
+browser "brave %u"
