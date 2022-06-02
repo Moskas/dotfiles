@@ -7,25 +7,26 @@ config.load_autoconfig()
 
 c.tabs.background = True
 c.new_instance_open_target = 'window'
-#c.url.start_pages('https://www.google.com')
+c.url.start_pages = ["https://www.google.com"]
 c.downloads.position = 'bottom'
 #c.spellcheck.languages = ['en-US']
 # Fonts
 c.fonts.prompts = '12pt "MesloLGS NF"'
 c.fonts.statusbar = '12pt "MesloLGS NF"'
 c.fonts.completion.entry = '12pt "MesloLGS NF"'
-
+#config.set("colors.webpage.darkmode.enabled", True)
 # Keybinds
-config.bind('M','hint links spawn --detach mpv {hint-url}')
+config.bind('W','hint links spawn --detach mpv {hint-url}')
 config.bind('St','hint links spawn --detach streamlink {hint-url} best')
 config.bind('Y','hint links spawn alacritty -e yt-dlp {hint-url}')
 config.bind('ce', 'config-edit')
 config.bind('B', 'spawn --userscript qute-bitwarden')
+config.bind('yl', 'hint links yank')
 
-config.bind('<Shift-Left>', 'back')
-config.bind('<Shift-Down>', 'tab-prev')
-config.bind('<Shift-Up>', 'tab-next')
-config.bind('<Shift-Right>', 'forward')
+config.bind('<Shift-Left>', 'tab-prev')
+config.bind('<Shift-Down>', 'back')
+config.bind('<Shift-Up>', 'forward')
+config.bind('<Shift-Right>', 'tab-next')
 
 
 # Editor
