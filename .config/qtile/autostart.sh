@@ -9,7 +9,7 @@ redshift -l manual &
 #pasystray &
 dunst &
 #deadd-notification-center &
-picom &
+picom --experimental-backends --backend glx &
 
 # Random apps
 discord &

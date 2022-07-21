@@ -4,10 +4,9 @@ from typing import List  # noqa: F401
 
 from libqtile import hook
 
-from libqtile.extension.dmenu import DmenuRun
+#from libqtile.extension.dmenu import DmenuRun
 from libqtile.extension.window_list import WindowList
-from libqtile.extension.command_set import CommandSet
-
+#from libqtile.extension.command_set import CommandSet
 # import layout objects
 from libqtile.layout.columns import Columns
 from libqtile.layout.xmonad import MonadTall
@@ -15,14 +14,14 @@ from libqtile.layout.stack import Stack
 from libqtile.layout.floating import Floating
 
 # import widgets and bars
-from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen, KeyChord
 from libqtile.lazy import lazy
 from bar_top import bar
 from bottom_bar import bottom_bar
 
 # import color palette
-from colors import gruvbox
-
+#from colors import gruvbox
+from colors import *
 # set mod key "windows/meta" key
 mod = "mod4"
 # set default terminal
@@ -30,29 +29,44 @@ terminal = "alacritty"
 
 keys = [
     # Launch applications
-    Key([mod], "w", lazy.spawn('firefox'), desc="Launch browser"),
-    Key([mod], "e", lazy.spawn('alacritty -e ranger -r ~'),desc="Launch nnn in home directory"),
-    Key([mod, "shift"], "d", lazy.spawn('discord'), desc="Launch discord"),
-    Key([mod,"shift"],"e", lazy.spawn('emacs'),desc="Launch emacs"),
-    Key([mod],"w", lazy.spawn('qutebrowser'),desc="Launch browser"),
+    KeyChord([mod],"w",[
+        Key([],"w", lazy.spawn('qutebrowser')),
+        Key([],"e", lazy.spawn('emacs')),
+        Key([],"d", lazy.spawn('discord')),
+        Key([],"s", lazy.spawn('steam')),
+    ]),
+    #Key([mod], "e", lazy.spawn('alacritty -e ranger -r ~'),desc="Launch nnn in home directory"),
     Key([mod], "o", lazy.spawn('flatpak run com.obsproject.Studio'), desc="Launch OBS"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # rofi shortcuts
     Key([mod], "d", lazy.spawn("rofi -show drun")),
-    Key([mod, "shift"],"q", lazy.spawn("rofi -show p -modi p:rofi-power-menu -width 20 -lines 6")),
-    Key([mod,"shift"],"s", lazy.spawn("/home/moskas/.scripts/rofi-pulse")),
-    Key([mod, "shift"], "b", lazy.spawn("rofi-bluetooth")),
+        KeyChord([mod], "s",[
+            Key([],"e", lazy.spawn("rofi -show emoji")),
+            Key([],"q", lazy.spawn("rofi -show p -modi p:rofi-power-menu -width 20 -lines 6")),
+            Key([],"w", lazy.spawn("rofi -show window")),
+            Key([],"c", lazy.spawn("rofi -show calc -modi calc -no-show-match -no-sort")),
+            Key([],"p", lazy.spawn("/home/moskas/.scripts/rofi-pulse")),
+            Key([],"b", lazy.spawn("rofi-bluetooth")),
+            Key([],"j", lazy.spawn("rofi-wifi-menu")),
+            Key([],"m", lazy.spawn("rofi-mpd -l")),
+        ]),
+
     Key([mod],"l",lazy.spawn("betterlockscreen -l")),
+
 
     # screenshot shortcuts
     Key(["control"],"Print", lazy.spawn("flameshot gui -c")),
     Key([],"Print", lazy.spawn("flameshot screen -c")),
 
     # media keys
-    Key([],"XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +1dB")),
-    Key([],"XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -1dB")),
+    Key([],"XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +2000")),
+    Key([],"XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -2000")),
     Key([],"XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+
+    # brightness keys
+    Key([],"XF86MonBrightnessUp",lazy.spawn('xbacklight -inc 10')),
+    Key([],"XF86MonBrightnessDown",lazy.spawn('xbacklight -dec 10')),
 
     # Command prompt
     # Key([mod], "p", lazy.spawncmd(),
@@ -170,19 +184,26 @@ for i in groups:
 
 # Append scratchpad with dropdowns to groups
 groups.append(ScratchPad('scratchpad', [
-    DropDown('term', 'alacritty', width=0.4, height=0.5, x=0.3, y=0.1, opacity=1),
-    DropDown('mixer', 'pavucontrol', width=0.7,
+    DropDown('term', 'alacritty', width=0.4, height=0.7, x=0.3, y=0.1, opacity=0.9),
+#    DropDown('discord', 'discord', width=0.4,
+#             height=0.6, x=0.3, y=0.1, opacity=1), SHAME
+    DropDown('mixer', 'alacritty -o font.size=8 -e pulsemixer', width=0.4,
              height=0.6, x=0.3, y=0.1, opacity=1),
-    DropDown('pomo', 'pomotroid', x=0.4, y=0.2, opacity=1),
+    DropDown('music', 'alacritty -e ncmpc', width=0.4,
+             height=0.6, x=0.3, y=0.1, opacity=1),
     DropDown('bitwarden', 'bitwarden-desktop',
              width=0.4, height=0.6, x=0.3, y=0.1, opacity=1),
+    DropDown('ranger', 'alacritty -e ranger ~', width=0.4, height=0.7, x=0.3, y=0.1, opacity=0.9),
+
 ]))
 # extend keys list with keybinding for scratchpad
 keys.extend([
-    Key(["control"], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
-    Key(["control"], "2", lazy.group['scratchpad'].dropdown_toggle('mixer')),
-    Key(["control"], "3", lazy.group['scratchpad'].dropdown_toggle('pomo')),
-    Key(["control"], "4", lazy.group['scratchpad'].dropdown_toggle('bitwarden')),
+    Key(["mod1"], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
+#    Key(["mod1"], "2", lazy.group['scratchpad'].dropdown_toggle('discord')),
+    Key(["mod1"], "2", lazy.group['scratchpad'].dropdown_toggle('music')),
+    Key(["mod1"], "3", lazy.group['scratchpad'].dropdown_toggle('mixer')),
+    Key(["mod1"], "4", lazy.group['scratchpad'].dropdown_toggle('ranger')),
+    Key(["mod1"], "9", lazy.group['scratchpad'].dropdown_toggle('bitwarden')),
 ])
 
 layouts = [
@@ -247,7 +268,7 @@ widget_defaults = dict(
 #    font='MesloLGS NF',
     fontsize=13,
 #    padding=10,
-    foreground=gruvbox['bg'],
+    foreground=gruvbox['fg'],
 )
 
 extension_defaults = widget_defaults.copy()
@@ -264,7 +285,7 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 auto_minimize = True
-wmname = "LG3D"
+wmname = "kittywm"
 
 
 @hook.subscribe.startup_once
