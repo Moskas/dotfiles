@@ -57,7 +57,7 @@ bottom_bar = Bar([
     TextBox('💰'),
 #    StockTicker(
 #        #bachground=gruvbox['red'],
-#        apikey='HXD1L00EZVSKT06L',
+#        apikey='',
 #        market='USD',
 #        symbol='INTC'
 #    ),
