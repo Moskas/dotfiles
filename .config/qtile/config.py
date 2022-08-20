@@ -1,15 +1,14 @@
 import os
 import subprocess
-from typing import List  # noqa: F401
+from typing import List
 
 from libqtile import hook
 
-#from libqtile.extension.dmenu import DmenuRun
-from libqtile.extension.window_list import WindowList
+#from libqtile.extension.window_list import WindowList
 #from libqtile.extension.command_set import CommandSet
 # import layout objects
 from libqtile.layout.columns import Columns
-from libqtile.layout.xmonad import MonadTall
+from libqtile.layout.xmonad import MonadTall,MonadThreeCol,MonadWide
 from libqtile.layout.stack import Stack
 from libqtile.layout.floating import Floating
 
@@ -19,9 +18,9 @@ from libqtile.lazy import lazy
 from bar_top import bar
 from bottom_bar import bottom_bar
 
+
 # import color palette
-#from colors import gruvbox
-from colors import *
+from colorschemes.gruvbox_dark import colors
 # set mod key "windows/meta" key
 mod = "mod4"
 # set default terminal
@@ -35,13 +34,14 @@ keys = [
         Key([],"d", lazy.spawn('discord')),
         Key([],"s", lazy.spawn('steam')),
     ]),
-    #Key([mod], "e", lazy.spawn('alacritty -e ranger -r ~'),desc="Launch nnn in home directory"),
     Key([mod], "o", lazy.spawn('flatpak run com.obsproject.Studio'), desc="Launch OBS"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # rofi shortcuts
     Key([mod], "d", lazy.spawn("rofi -show drun")),
         KeyChord([mod], "s",[
+            Key([],"s", lazy.spawn("rofi-ttv")),
+            Key([],"a", lazy.spawn("bwmenu")),
             Key([],"e", lazy.spawn("rofi -show emoji")),
             Key([],"q", lazy.spawn("rofi -show p -modi p:rofi-power-menu -width 20 -lines 6")),
             Key([],"w", lazy.spawn("rofi -show window")),
@@ -51,7 +51,7 @@ keys = [
             Key([],"j", lazy.spawn("rofi-wifi-menu")),
             Key([],"m", lazy.spawn("rofi-mpd -l")),
         ]),
-
+    Key(["mod1"],"Tab", lazy.spawn("rofi -show window")),
     Key([mod],"l",lazy.spawn("betterlockscreen -l")),
 
 
@@ -67,37 +67,6 @@ keys = [
     # brightness keys
     Key([],"XF86MonBrightnessUp",lazy.spawn('xbacklight -inc 10')),
     Key([],"XF86MonBrightnessDown",lazy.spawn('xbacklight -dec 10')),
-
-    # Command prompt
-    # Key([mod], "p", lazy.spawncmd(),
-    #     desc="Spawn a command using a prompt widget"),
-
-    # DmenuRun
-#    Key([mod, "shift"], 'd', lazy.run_extension(DmenuRun(
-#        font="MesloLGS NF",
-#        fontsize="13",
-#        dmenu_command="dmenu_run",
-#        dmenu_prompt=" ",
-#        dmenu_height=10,
-#        dmenu_lines=15,
-#        background=gruvbox['bg'],
-#        foreground=gruvbox['fg'],
-#        selected_foreground=gruvbox['dark-blue'],
-#        selected_background=gruvbox['bg'],
-#    ))),
-
-    Key([mod, "shift"], 'w', lazy.run_extension(WindowList(
-        all_groups=True,
-        font="MesloLGS NF",
-        fontsize="13",
-        dmenu_prompt=" ",
-        dmenu_height=10,
-        # dmenu_lines=15,
-        background=gruvbox['bg'],
-        foreground=gruvbox['fg'],
-        selected_foreground=gruvbox['dark-blue'],
-        selected_background=gruvbox['bg'],
-    ))),
 
     # Toggle floating and fullscreen
     Key([mod], "f", lazy.window.toggle_fullscreen(),
@@ -157,17 +126,16 @@ keys = [
 ]
 
 groups = [
-    Group('1', label="一", matches=[
-          Match(wm_class='firefox'), Match(wm_class='brave'), Match(wm_class='qutebrowser')], layout="columns"),
-    Group('2', label="二", matches=[Match(wm_class='emacs'),Match(wm_class='code')],layout="columns"),
-    Group('3', label="三", matches=[Match(wm_class='discord')], layout="columns"),
-    Group('4', label="四", layout="columns"),
-    Group('5', label="五", matches=[Match(wm_class="obs")], layout="columns"),
-    Group('6', label="六", layout="columns"),
-    Group('7', label="七", matches=[Match(wm_class='steam')],layout="columns"),
+    Group('1', label="一", matches=[Match(wm_class='firefox'), Match(wm_class='Brave'), Match(wm_class='qutebrowser')], layout="stack"),
+    Group('2', label="二", matches=[Match(wm_class='discord'),Match(wm_class='signal')], layout="stack"),
+    Group('3', label="三", matches=[Match(wm_class='emacs'),Match(wm_class='code'),Match(wm_class='neovide')],layout="columns"),
+    Group('4', label="四", matches=[Match(wm_class='Zathura')], layout="monadthreecol"), # 六
+    Group('5', label="五", layout="columns"),
+    Group('6', label="六", matches=[Match(wm_class="obs")], layout="columns"),
+    Group('7', label="七", matches=[Match(wm_class="steam")],layout="columns"),
     Group('8', label="八", layout="columns"),
-    Group('9', label="九",matches=[Match(wm_class="Spotify")],layout="columns"),
-    Group('0',label="零",layout="monadtall"),
+    Group('9', label="九", layout="columns"),
+    Group('0', label="零", matches=[Match(title='Spotify'),Match(wm_class="mpdevil")],layout="stack"), # 零
 ]
 
 for i in groups:
@@ -185,21 +153,20 @@ for i in groups:
 # Append scratchpad with dropdowns to groups
 groups.append(ScratchPad('scratchpad', [
     DropDown('term', 'alacritty', width=0.4, height=0.7, x=0.3, y=0.1, opacity=0.9),
-#    DropDown('discord', 'discord', width=0.4,
-#             height=0.6, x=0.3, y=0.1, opacity=1), SHAME
-    DropDown('mixer', 'alacritty -o font.size=8 -e pulsemixer', width=0.4,
-             height=0.6, x=0.3, y=0.1, opacity=1),
+    DropDown('stock', 'alacritty -e tickrs', width=0.4, height=0.7, x=0.3, y=0.1, opacity=0.9),
+    DropDown('mixer', 'alacritty -e pulsemixer', width=0.4,
+             height=0.6, x=0.3, y=0.1, opacity=0.9),
     DropDown('music', 'alacritty -e ncmpc', width=0.4,
-             height=0.6, x=0.3, y=0.1, opacity=1),
+             height=0.6, x=0.3, y=0.1, opacity=0.9),
     DropDown('bitwarden', 'bitwarden-desktop',
              width=0.4, height=0.6, x=0.3, y=0.1, opacity=1),
-    DropDown('ranger', 'alacritty -e ranger ~', width=0.4, height=0.7, x=0.3, y=0.1, opacity=0.9),
+    DropDown('ranger', 'alacritty -e ranger /home/moskas/', width=0.4, height=0.7, x=0.3, y=0.1, opacity=0.9),
 
 ]))
 # extend keys list with keybinding for scratchpad
 keys.extend([
     Key(["mod1"], "1", lazy.group['scratchpad'].dropdown_toggle('term')),
-#    Key(["mod1"], "2", lazy.group['scratchpad'].dropdown_toggle('discord')),
+    Key(["mod1","shift"], "1", lazy.group['scratchpad'].dropdown_toggle('stock')),
     Key(["mod1"], "2", lazy.group['scratchpad'].dropdown_toggle('music')),
     Key(["mod1"], "3", lazy.group['scratchpad'].dropdown_toggle('mixer')),
     Key(["mod1"], "4", lazy.group['scratchpad'].dropdown_toggle('ranger')),
@@ -208,26 +175,35 @@ keys.extend([
 
 layouts = [
     Stack(
-        border_normal=gruvbox['dark-gray'],
-        border_focus=gruvbox['blue'],
+        border_normal=colors['dark-gray'],
+        border_focus=colors['blue'],
         border_width=2,
         num_stacks=1,
         margin=5,
     ),
     MonadTall(
-        border_normal=gruvbox['dark-gray'],
-        border_focus=gruvbox['blue'],
+        border_normal=colors['dark-gray'],
+        border_focus=colors['blue'],
         margin=5,
         border_width=2,
         single_border_width=2,
         single_margin=5,
     ),
-    Columns(
-        border_normal=gruvbox['dark-gray'],
-        border_focus=gruvbox['blue'],
+    MonadThreeCol(
+        border_normal=colors['dark-gray'],
+        border_focus=colors['blue'],
+        margin=5,
         border_width=2,
-        border_normal_stack=gruvbox['dark-gray'],
-        border_focus_stack=gruvbox['cyan'],
+        single_border_width=2,
+        single_margin=5,
+        new_client_position='bottom',
+    ),
+    Columns(
+        border_normal=colors['dark-gray'],
+        border_focus=colors['blue'],
+        border_width=2,
+        border_normal_stack=colors['dark-gray'],
+        border_focus_stack=colors['cyan'],
         border_on_single=2,
         margin=5,
         margin_on_single=5,
@@ -235,8 +211,8 @@ layouts = [
 ]
 
 floating_layout = Floating(
-    border_normal=gruvbox['dark-gray'],
-    border_focus=gruvbox['dark-blue'],
+    border_normal=colors['dark-gray'],
+    border_focus=colors['dark-blue'],
     border_width=3,
     float_rules=[
         *Floating.default_float_rules,
@@ -268,13 +244,12 @@ widget_defaults = dict(
 #    font='MesloLGS NF',
     fontsize=13,
 #    padding=10,
-    foreground=gruvbox['fg'],
+    foreground=colors['fg'],
 )
 
 extension_defaults = widget_defaults.copy()
 
-screens = [Screen(top=bar,bottom=bottom_bar
-)]
+screens = [Screen(top=bar)]#,bottom=bottom_bar)]
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List

@@ -1,135 +1,164 @@
 from libqtile.bar import Bar
 from libqtile.widget import (
+    Notify,
     Prompt,
     GroupBox,
     CurrentLayout,
+    CurrentLayoutIcon,
     WindowCount,
     WindowName,
-#CPU,
-#    NvidiaSensors,
-    Battery,
-#    Memory,
+    OpenWeather,
     Systray,
     Clock,
-#    Spacer,
     Volume,
-#   Wlan,
-#    sensors,
-    TextBox
+    TextBox,
+    Spacer,
+    Mpd2,
+    WidgetBox
 )
-from colors import gruvbox
-
-import cpuinfo
-if cpuinfo.get_cpu_info()['vendor_id_raw'] == 'GenuineIntel':
-    vendor = gruvbox['blue']
-else:
-    vendor = gruvbox['red']
+#from colors import colors
+from config import colors
+#from .config import colors
+#import cpuinfo
+#if cpuinfo.get_cpu_info()['vendor_id_raw'] == 'GenuineIntel':
+#    vendor = colors['blue']
+#else:
+#    vendor = colors['red']
 
 bar = Bar([
     TextBox(
         '',
-        foreground=gruvbox['blue'],
-        #background=gruvbox['dark-blue'],
+        foreground=colors['blue'],
+        #background=colors['dark-blue'],
         fontsize=20,
     ),
     WindowCount(
         text_format='缾 {num}',
-        #background=gruvbox['magenta'],
+        #background=colors['magenta'],
         show_zero=True
     ),
-    CurrentLayout(
-        #background=gruvbox['blue'],
+    CurrentLayoutIcon(
+        padding=5,
+        scale=0.6,
     ),
+#    CurrentLayout(),
     GroupBox(
         disable_drag=True,
-        active=gruvbox['fg'],
-        inactive=gruvbox['dark-gray'],
+        active=colors['fg'],
+        inactive=colors['dark-gray'],
         highlight_method='line',
-        block_highlight_text_color=gruvbox['yellow'],
+        block_highlight_text_color=colors['cyan'],
         borderwidth=0,
-        highlight_color=gruvbox['bg'],
-        #background=gruvbox['bg'],
+        highlight_color=colors['bg'],
+        #background=colors['bg'],
         padding=10
     ),
+    Spacer(),
+        Mpd2(
+        #bachground=colors['fg'],
+        status_format='{play_status} {artist} - {title}',
+        font='Hack',
+        play_states={'pause': '', 'play': '', 'stop': ''},
+        prepare_status={'consume': 'c', 'random': 'z', 'repeat': 'r', 'single': '1', 'updating_db': 'U'},
+        scroll=True,
+        #width=40
+    ),
 
+    Spacer(),
+#   Prompt(foreground=colors['fg']),
 
-    Prompt(foreground=gruvbox['fg']),
+#    WindowName(
+#        foreground=colors['fg'],
+#        #background=colors['bg'],
+#        max_chars=20,
+#        format='{name}'
+#    ),
+    Notify(
+        action=True,
+        fmt='{}'
+    ),
+    WidgetBox(
+        widgets=[
+        OpenWeather(
+        location='Wrocław,PL',
+        language='PL',
+        format='{location_city}: {main_temp} °{units_temperature} | {icon} | {sunrise} {sunset} | {wind_speed} m/s {wind_direction}'
+    ),
 
-    WindowName(
-        foreground=gruvbox['fg'],
-        #background=gruvbox['bg'],
-        max_chars=20,
-        format='{name}'
+        ],
+        text_closed='',
+        text_open='',
+        close_button_location='right'
     ),
 
     Systray(
         padding=10,
         icon_size=16,
-        #background=gruvbox['gray'],
+        #background=colors['gray'],
     ),
     TextBox(' ',
-            #background=gruvbox['gray'],
-            width=8
+#            #background=colors['gray'],
+#            width=8
     ),
 #    This isn't needed on PC (Most likely it will stop qtile from launching)
-    Battery(
-        format='{percent:2.0%} {char}',
-        full_char='👌',
-        empty_char=':(',
-        #background=gruvbox['green'],
-        low_background=gruvbox['red'],
-        charge_char='',
-        discharge_char='',
+#    Battery(
+#        format='{percent:2.0%} {char}',
+#        full_char='👌',
+#        empty_char=':(',
+#        #background=colors['green'],
+#        low_background=colors['red'],
+#        charge_char='',
+#        discharge_char='',
 #        font='MesloLGS NF',
 #        font='Hack',
-    ),
-#    TextBox('',#background=gruvbox['dark-blue'],fontsize=16,),
+#    ),
+#    TextBox('',#background=colors['dark-blue'],fontsize=16,),
 #    CPU(
 #        format='{load_percent}%',
-#        #background=gruvbox['dark-blue'],
+#        #background=colors['dark-blue'],
 #        padding=0,
 #    ),
-#    TextBox('',#background=gruvbox['dark-blue'],width=8),
+#    TextBox('',#background=colors['dark-blue'],width=8),
 #    ThermalSensor(
-#        foreground=gruvbox['bg'],
+#        foreground=colors['bg'],
 #        format='{sensor}',
 #        #background=vendor,
 #        padding=100,
 #    ),
 #    NvidiaSensors(
-#        foreground=gruvbox['bg'],
-#        #background=gruvbox['green'],
+#        foreground=colors['bg'],
+#        #background=colors['green'],
 #        format='{temp}°C'
 #    ),
 #    Spacer(length=10),
 #    Memory(
 #        format=' {MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',
-#        #background=gruvbox['blue']),
+#        #background=colors['blue']),
 #    Spacer(length=5),
-    Volume(
-        fmt='Vol:{}',
-        font='MesloLGS NF',
-        #background=gruvbox['dark-yellow'],
-        padding=10,
-        step=5,
-    ),
+#    Volume(
+#        fmt='Vol:{}',
+#        font='MesloLGS NF',
+#        #background=colors['dark-yellow'],
+#        padding=10,
+#        step=5,
+#    ),
     Clock(
-        #background=gruvbox['fg'],
+        #background=colors['fg'],
         format=' %a %H:%M:%S',
     ),
 #    Wlan(
 #        format=' {essid} {percent:2.0%}',
 #        max_chars=6,
-#        #background=gruvbox['green'],
+#        #background=colors['green'],
 #        mouse_callbacks={'Button1':lambda:qtile.cmd_spawn("alacritty -e nmcli")}
 #    ),
 ],
 
     margin=[0, 0, 0, 0],
 #   border_width=[0,0,2,0],
-#   border_color=[gruvbox['blue'],gruvbox['blue'],gruvbox['blue'],gruvbox['blue']],
-    background=gruvbox['bg'],
-    foreground=gruvbox['fg'],
+#   border_color=[colors['blue'],gruvbox['blue'],gruvbox['blue'],gruvbox['blue']],
+    background=colors['bg'],
+    foreground=colors['fg'],
     opacity=1,
     size=25,
 )
