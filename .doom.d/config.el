@@ -29,14 +29,13 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/Org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-(set-face-attribute 'default t :font  "Hack-8")
-(setq fancy-splash-image "~/.emacs.d/emacs.png")
-
+(setq doom-theme 'doom-gruvbox
+      doom-font (font-spec :family "FiraCode Nerd Font" :size 16 :weight 'medium)
+      doom-unicode-font(font-spec :family "FiraCode Nerd Font" :size 16))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
