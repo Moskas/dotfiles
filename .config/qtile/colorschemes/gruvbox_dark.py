@@ -1,5 +1,6 @@
 colors = {
-    'bg':           '#282828',
+    #'bg':           '#282828', # Medium-dark
+    'bg':           '#1d2021', # Hard-dark
     'fg':           '#ebdbb2',
     'dark-red':     '#cc241d',
     'red':          '#fb4934',

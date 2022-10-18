@@ -1,6 +1,6 @@
 from libqtile.bar import Bar
 
-from config import colors
+from colorschemes.gruvbox_dark import colors
 
 from libqtile.widget.textbox import TextBox
 from libqtile.widget.spacer import Spacer
@@ -19,7 +19,7 @@ bottom_bar = Bar([
         colour_no_updates=colors['fg'],
         display_format=' {updates}',
         distro = "Arch",
-        execute='alacritty -e /usr/bin/paru -Syu',
+        execute='alacritty -e /usr/bin/paru -Syyu',
         no_update_string = '',
         update_interval='60'
     ),
