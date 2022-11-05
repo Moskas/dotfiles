@@ -1,0 +1,149 @@
+#right_format = "$battery$memory_usage$hostname"
+format = "$time$all$directory$sudo$character"
+add_newline = false
+palette = "gruvbox"
+
+[time]
+disabled = false
+format = '[$time]($style)'
+time_format = "%T"
+
+[character]
+success_symbol = "[ﬦ](bold green)"
+error_symbol = "[ﬦ](bold red)"
+
+[sudo]
+style = "bold green"
+symbol = " "
+format = "[$symbol]($style)"
+disabled = false
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = " [$user]($style) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[$ssh_symbol](bold blue)on [$hostname](bold red) "
+trim_at = ".companyname.com"
+disabled = false
+
+[palettes.gruvbox]
+fg = "#ebdbb2"
+bg = "#1d2021"
+yellow = "#fabd2f"
+dark-yellow = "#d79921"
+green = "#b8bb26"
+dark-green = "#98971a"
+red = "#fb4932"
+dark-red = "#cc241d"
+magenta = "#d3869b"
+dark-magenta = "#b16286"
+blue = "#83a598"
+dark-blue = "#458588"
+cyan = "#8ec07c"
+dark-cyan = "#689d6a"
+gray = "#666666"
+dark-gray = "#3d3d3d"
+orange = "#d79921"
+
+[localip]
+ssh_only = false
+format = "@[$localipv4](bold red) "
+disabled = true
+
+[memory_usage]
+disabled = false
+threshold = -1
+symbol = " "
+format = "$symbol[$ram( | $swap)]($style) "
+style = "bold dark-green"
+
+[line_break]
+disabled = false
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+detect_extensions = ["c", "h", "cpp"]
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+format = " on [$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[meson]
+symbol = "喝 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "ﳒ "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
