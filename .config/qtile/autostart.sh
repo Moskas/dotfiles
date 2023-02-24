@@ -1,14 +1,22 @@
 #!/bin/sh
 
-xrandr --output DP-0 -s 1920x1080 -r 143.98 --primary
-feh --bg-scale --randomize /home/moskas/.config/wallpapers/gruvbox/**
+xrandr --output DP-0 --mode 1920x1080 --rate 143.98
+feh --bg-fill --randomize /home/moskas/.config/wallpapers/gruvbox/** &
+openrgb -p red & 
+betterlockscreen -u ~/.config/wallpapers/gruvbox/**/* 
 setxkbmap pl &
-redshift
 dunst &
-picom --experimental-backends --backend glx &
+#picom --experimental-backends --backend glx & # OBSOLETE
+picom &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Random apps
 discord &
+nicotine &
 
 # Rival 3 mouse sensitivity
 rivalcfg -s 800 
+# Easyeffects
+#easyeffects --gapplication-service &
+
+# SSHFS for local NAS
+sshfs -o ~/.ssh/optiplex moskas@optiplex.home:~ ~/nas

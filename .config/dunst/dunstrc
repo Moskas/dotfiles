@@ -66,7 +66,7 @@
     # screen width minus the width defined in within the geometry option.
     #geometry = "600x5-10+10"
     geometry = "0x0-0+0"
-    origin = bottom-right
+    origin = top-right
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
@@ -226,19 +226,27 @@
 
 [mpd-notification]
     appname = mpd-notification
-    summary = "Now playing"
     urgency = critical
+    frame_color = "#d79921"
+    background = "#3c3836"
+    format = "%b\n%p"
 
-[discord]
-    appname = discord
-    summary = "Message:"
+[Discord]
+    appname = Discord
     urgency = critical
+    frame_color = "#b16286"
 
 [Spotify]
     appname = Spotify
     urgency = normal
     background = "#3c3836"
     frame_color = "#8ec07c"
+
+[Flameshot]
+    appname = flameshot
+    urgency = low
+    frame_color = "#ebdbb2"
+    frame_color = "#fb4934"
 
 #[twitter]
 #    appname = Pidgin

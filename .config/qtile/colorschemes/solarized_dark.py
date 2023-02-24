@@ -15,6 +15,8 @@ colors = {
     "cyan": "#00afaf",
     "dark-gray": "#3d3d3d",
     "gray": "#262626",
-    "fg4": "#839496",
-    "fg1": "#3d3d3d",
+    "fg4": "#839496",  # fg
+    # "fg1": "#3d3d3d", # dark-gray
+    "active": "#839496",
+    "inactive": "#3d3d3d",
 }

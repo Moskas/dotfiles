@@ -11,6 +11,7 @@ from libqtile.layout.columns import Columns
 from libqtile.layout.xmonad import MonadTall, MonadThreeCol, MonadWide
 from libqtile.layout.stack import Stack
 from libqtile.layout.floating import Floating
+from libqtile.layout.zoomy import Zoomy
 
 # import widgets and bars
 from libqtile.config import (
@@ -29,14 +30,12 @@ from bar_top import bar
 
 # from bottom_bar import bottom_bar
 
-
 from colorschemes.gruvbox_dark import colors
-
 
 # set mod key "windows/meta" key
 mod = "mod4"
 # set default terminal
-terminal = "alacritty"
+terminal = "kitty"
 
 keys = [
     # Launch applications
@@ -44,7 +43,7 @@ keys = [
         [mod],
         "w",
         [
-            Key([], "w", lazy.spawn("qutebrowser")),
+            Key([], "w", lazy.spawn("brave")),  # qutebrowser someday 😔
             Key([], "e", lazy.spawn("emacs")),
             Key([], "d", lazy.spawn("discord")),
             Key([], "s", lazy.spawn("steam")),
@@ -78,8 +77,23 @@ keys = [
             Key([], "m", lazy.spawn("rofi-mpd -l")),
         ],
     ),
+    # Key(
+    #    ["mod"],
+    #    "p",
+    #    lazy.spawn(
+    #        "kitty -e feh --bg-fill ~/.config/wallpapers/gruvbox/** --randomize"
+    #    )
+    # ),
+    # KeyChord(
+    #    [mod],
+    #    "m",
+    #    [
+    #        Key([], "n", lazy.spawn("kitty -e mpc next")),
+    #        Key([], "b", lazy.spawn("kitty -e mpc prev")),
+    #    ],
+    # ),
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window")),
-    Key([mod], "l", lazy.spawn("betterlockscreen -l")),
+    # Key([mod], ["control"], "l", lazy.spawn("betterlockscreen -l")),
     # screenshot shortcuts
     Key(["control"], "Print", lazy.spawn("flameshot gui -c")),
     Key([], "Print", lazy.spawn("flameshot screen -c")),
@@ -112,12 +126,17 @@ keys = [
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "o", lazy.layout.maximize()),
     Key([mod, "control"], "space", lazy.layout.flip()),
-    # Switch between windows
+    # Switch between windows Arrow keys
     Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    # Getting used to vim keys
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "Space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key(
@@ -176,6 +195,7 @@ groups = [
             Match(wm_class="firefox"),
             Match(wm_class="brave-browser"),
             Match(wm_class="qutebrowser"),
+            Match(wm_class="nyxt"),
         ],
         layout="stack",
     ),
@@ -199,16 +219,16 @@ groups = [
     Group("5", label="", matches=[Match(wm_class="Steam")], layout="columns"),
     Group(
         "6",
-        label="",
-        matches=[Match(wm_class="obs"), Match(wm_class="sxiv")],
+        label="",
+        matches=[Match(wm_class="obs")],
         layout="columns",
     ),
-    Group("7", label="", layout="columns"),
-    Group("8", label="", layout="columns"),
+    Group("7", label="", layout="zoomy"),
+    Group("8", label="", matches=[Match(wm_class="Geary")], layout="columns"),
     Group("9", label="ﱮ", layout="columns"),
     Group(
         "0",
-        label="",
+        label="",
         matches=[Match(wm_class="Spotify"), Match(wm_class="mpdevil")],
         layout="stack",
     ),
@@ -241,11 +261,17 @@ groups.append(
         "scratchpad",
         [
             DropDown(
-                "term", "alacritty", width=0.6, height=0.7, x=0.2, y=0.0, opacity=0.9
+                "term",
+                "kitty",
+                width=0.6,
+                height=0.7,
+                x=0.2,
+                y=0.0,
+                opacity=0.9,
             ),
             DropDown(
                 "pixel",
-                "alacritty -e scrcpy -b 30M -w -S --max-fps=90",
+                "kitty -e scrcpy -b 30M -w -S --max-fps=90",
                 width=0.6,
                 height=0.7,
                 x=0.2,
@@ -254,7 +280,7 @@ groups.append(
             ),
             DropDown(
                 "stock",
-                "alacritty -e tickrs",
+                "kitty -e tickrs",
                 width=0.6,
                 height=0.7,
                 x=0.2,
@@ -263,7 +289,7 @@ groups.append(
             ),
             DropDown(
                 "mixer",
-                "alacritty -e pulsemixer",
+                "kitty -e pulsemixer",
                 width=0.4,
                 height=0.2,
                 x=0.3,
@@ -271,8 +297,17 @@ groups.append(
                 opacity=0.9,
             ),
             DropDown(
+                "webplayer",
+                "qutebrowser",
+                width=0.8,
+                height=0.8,
+                x=0.1,
+                y=0.0,
+                opacity=1.0,
+            ),
+            DropDown(
                 "music",
-                "alacritty -e ncmpcpp",
+                "kitty -e ncmpcpp",
                 width=0.6,
                 height=0.7,
                 x=0.2,
@@ -290,7 +325,16 @@ groups.append(
             ),
             DropDown(
                 "ranger",
-                "alacritty -e ranger /home/moskas/",
+                "kitty -e ranger /home/moskas/",
+                width=0.6,
+                height=0.7,
+                x=0.2,
+                y=0.0,
+                opacity=0.9,
+            ),
+            DropDown(
+                "OBS",
+                "obs",
                 width=0.6,
                 height=0.7,
                 x=0.2,
@@ -305,10 +349,16 @@ keys.extend(
     [
         Key(["mod1"], "1", lazy.group["scratchpad"].dropdown_toggle("term")),
         Key(["mod1", "shift"], "1", lazy.group["scratchpad"].dropdown_toggle("stock")),
-        Key(["mod1", "shift"], "2", lazy.group["scratchpad"].dropdown_toggle("pixel")),
         Key(["mod1"], "2", lazy.group["scratchpad"].dropdown_toggle("music")),
+        Key(["mod1", "shift"], "2", lazy.group["scratchpad"].dropdown_toggle("pixel")),
         Key(["mod1"], "3", lazy.group["scratchpad"].dropdown_toggle("mixer")),
+        Key(["mod1", "shift"], "3", lazy.group["scratchpad"].dropdown_toggle("OBS")),
         Key(["mod1"], "4", lazy.group["scratchpad"].dropdown_toggle("ranger")),
+        Key(
+            ["mod1", "shift"],
+            "4",
+            lazy.group["scratchpad"].dropdown_toggle("webplayer"),
+        ),
         Key(["mod1"], "9", lazy.group["scratchpad"].dropdown_toggle("bitwarden")),
     ]
 )
@@ -317,7 +367,7 @@ layouts = [
     Stack(
         border_normal=colors["dark-gray"],
         border_focus=colors["blue"],
-        border_width=2,
+        border_width=4,
         num_stacks=1,
         margin=5,
     ),
@@ -341,12 +391,12 @@ layouts = [
     Columns(
         border_normal=colors["dark-gray"],
         border_focus=colors["blue"],
-        border_width=2,
+        border_width=4,
         border_normal_stack=colors["dark-gray"],
         border_focus_stack=colors["cyan"],
         border_on_single=2,
-        margin=2,
-        margin_on_single=5,
+        margin=5,
+        margin_on_single=10,
     ),
 ]
 
@@ -356,18 +406,13 @@ floating_layout = Floating(
     border_width=3,
     float_rules=[
         *Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-        Match(title="Android Emulator - pixel5:5554"),
-        Match(wm_class="blueman-manager"),
+        Match(title="OpenRGB"),
+        Match(title="Pixel 6"),
         Match(wm_class="pavucontrol"),
-        Match(wm_class="zoom"),
+        Match(wm_class="stacer"),
         Match(wm_class="bitwarden"),
         Match(wm_class="nemo"),
+        Match(wm_class="thunar"),
     ],
 )
 
@@ -385,14 +430,15 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 widget_defaults = dict(
-    #    font='MesloLGS NF',
+    # font='MesloLGS Nerd Font',
     fontsize=13,
     foreground=colors["fg"],
 )
 
 extension_defaults = widget_defaults.copy()
 
-screens = [Screen(top=bar)]  # ,bottom=bottom_bar)]
+screens = [Screen(top=bar)]
+# bottom=bottom_bar)]
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
@@ -410,3 +456,12 @@ wmname = "kittywm"
 def autostart():
     home = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.run([home])
+
+
+# @hook.subscribe.client_new
+# def disable_floating(window):
+#    rules = [Match(wm_class="mpv")]
+#
+#    if any(window.match(rule) for rule in rules):
+#        window.togroup(qtile.current_group.name)
+#        window.cmd_disable_floating()
