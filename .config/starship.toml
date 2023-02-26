@@ -1,50 +1,71 @@
-#right_format = "$battery$memory_usage$hostname"
 format = """
+$os\
 $username\
+[\ue0bc](fg:dark-blue bg:red)\
 $hostname\
-$rust\
+[\ue0bc](fg:red bg:dark-yellow)\
+$rust$python$node$lua\
+[\ue0bc](fg:dark-yellow bg:dark-magenta)\
 $git_branch$git_status$git_state\
+[\ue0bc](fg:dark-magenta)\
+$cmd_duration\
 $fill\
+[\ue0be](fg:dark-green)\
 $memory_usage\
+[\ue0be](fg:dark-yellow bg:dark-green)\
 $time\
 $line_break\
 $directory$sudo$character
 """
 add_newline = false
-#palette = "gruvbox"
+palette = "gruvbox"
 
 [fill]
 symbol = " "
 
 [time]
 disabled = false
-format = '[$time]($style)'
+format = '[ $time ]($style)'
 time_format = "%T"
-style ="yellow bold"
+style ="fg:bg bold bg:dark-yellow"
+
+[cmd_duration]
+min_time = 500
+format = ' took [$duration](bold yellow)'
+
 
 [character]
 success_symbol = "[ﬦ](bold green)"
 error_symbol = "[ﬦ](bold red)"
 
 [sudo]
-style = "bold green"
-symbol = " "
+style = "bold red"
+symbol = " "
 format = "[$symbol]($style)"
 disabled = false
 
 [username]
-style_user = "yellow bold"
+style_user = "fg:bg bg:dark-blue bold"
 style_root = "green bold"
-format = "[$user]($style)"
+format = "[ $user ]($style)"
 disabled = false
 show_always = true
 
 [hostname]
 ssh_only = false
-format = "[$ssh_symbol](bold blue)@[$hostname](bold red) "
+format = "[ $ssh_symbol](bold fg:blue bg:red)[$hostname ](bold bg:red fg:bg)"
 trim_at = ".companyname.com"
 disabled = false
 
+[os]
+disabled = false
+style = "bg:dark-blue"
+
+[os.symbols]
+Arch =  "[  ](fg:bg $style)"
+NixOS = "[  ](fg:blue $style)"
+Macos = "[  ](fg:red $style)"
+Linux = "[  ](fg:fg $style)"
 
 [palettes.gruvbox]
 fg = "#ebdbb2"
@@ -63,7 +84,6 @@ cyan = "#8ec07c"
 dark-cyan = "#689d6a"
 gray = "#666666"
 dark-gray = "#3d3d3d"
-orange = "#d79921"
 
 [localip]
 ssh_only = false
@@ -73,9 +93,9 @@ disabled = true
 [memory_usage]
 disabled = false
 threshold = -1
-symbol = " "
-format = "$symbol($style)[$ram( | $swap)]($style) "
-style = "bold green"
+symbol = "  "
+format = "[$symbol]($style)[$ram( | $swap) ]($style)"
+style = "bold fg:bg bg:dark-green"
 
 [line_break]
 disabled = false
@@ -98,7 +118,11 @@ symbol = " "
 
 [directory]
 read_only = " "
+home_symbol = " ~"
 truncation_length = 4
+truncation_symbol = '…/'
+truncate_to_repo = true
+
 
 [docker_context]
 symbol = " "
@@ -110,18 +134,18 @@ symbol = " "
 symbol = " "
 
 [git_branch]
-format = "[$symbol$branch(:$remote_branch)]($style) "
+format = "[ $symbol$branch(:$remote_branch) ](bg:dark-magenta fg:bg bold)"
 symbol = " "
 
 [git_status]
-format='([\[$all_status$ahead_behind\]]($style) )'
-up_to_date = ' [✓](green)'
+format='([\[$all_status$ahead_behind\]](bg:dark-magenta fg:bg bold))'
+#up_to_date = '✓'
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
-stashed = '📦 '
-modified = '📝 '
-staged = '[+($count)](green)'
+stashed = '📦'
+modified = '📝'
+staged = '+($count)'
 
 [golang]
 symbol = " "
@@ -159,7 +183,7 @@ symbol = " "
 
 [python]
 symbol = " "
-format = '[$symbol$version](red bold) '
+format = '[ $symbol$version ](bg:dark-yellow fg:bg bold)'
 
 [rlang]
 symbol = "ﳒ "
@@ -169,7 +193,7 @@ symbol = " "
 
 [rust]
 symbol = "🦀 "
-format = '[$symbol$version](red bold) '
+format = '[ $symbol$version ](bg:dark-yellow fg:bg bold)'
 
 [scala]
 symbol = " "
