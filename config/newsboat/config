@@ -1,0 +1,26 @@
+include theme
+
+refresh-on-startup yes
+reload-threads 100
+
+# external programs
+browser "firefox --new-tab %u"
+player "mpv"
+
+bind-key RIGHT open
+bind-key LEFT quit
+
+bind-key l open
+bind-key j down
+bind-key k up
+bind-key h quit
+
+# macro to watch videos with mpv
+macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser firefox
+
+#pager "w3m -T text/html"
+#html-renderer "w3m"
+show-read-feeds yes
+show-read-articles yes
+notify-always yes
+notify-program "~/usr/bin/notify-send"

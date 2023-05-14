@@ -1,0 +1,63 @@
+"query:Blogs:tags # \"Blog\""
+"query:Reddit:tags # \"Reddit\""
+"query:Youtube:tags # \"Youtube\""
+"query:Odysee:tags # \"Odysee\""
+"query:Piped:tags # \"Piped\""
+"query:Wrocław:tags # \"Wrocław\""
+"query:Programming:tags # \"Programming\""
+
+#Videos
+##Youtube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMiyV_Ib77XLpzHPQH_q0qQ Youtube "~Veronica Explains"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg Youtube "~Wolfgang"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw Youtube "~TheLinuxExperiment"
+##Odysee
+https://odysee.com/$/rss/@Urbandoned:5 Odysee "~Urbandoned"
+https://odysee.com/$/rss/@AlphaNerd:8 Odysee "~Mental Outlaw"
+https://odysee.com/$/rss/@bugswriter:8 Odysee "~bugswriter"
+https://odysee.com/$/rss/@DistroTube:2 Odysee "~DistroTube"
+https://odysee.com/$/rss/@BrodieRobertson:5 Odysee "~BrodieRobertson"
+https://odysee.com/$/rss/@SomeOrdinaryGamers:a Odysee "~Mutahar"
+https://odysee.com/$/rss/@thelinuxcast:4 Odysee "~TheLinuxCast"
+https://odysee.com/$/rss/@rootbsd:6 Odysee "~Root BSD"
+https://odysee.com/$/rss/@TheOpenBSDGuy:e Odysee "~The OpenBSD Guy"
+https://odysee.com/$/rss/@SwindlesMcCoop:1 Odysee "~SwindlesMcCoop"
+https://odysee.com/$/rss/@adriansdigitalbasement:f Odysee "~Adrian's DB"
+https://odysee.com/$/rss/@mechtechkeyboards:b Odysee "~Mechkeyboards" Tech Keyboards
+https://odysee.com/$/rss/@michaelnr0h:7 Odysee "~Michael Horn"
+https://odysee.com/$/rss/@fireship:6 Odysee "~Fireship" Tech Programming
+##Piped
+https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCBJycsmduvYEL83R_U4JriQ Piped
+#Blog
+https://emacsredux.com/atom.xml Tech Emacs Blog
+https://emacstil.com/feed.xml Tech Emacs Blog
+https://irreal.org/blog/?feed=rss2 Tech Emacs Blog
+https://mbork.pl/?action=rss;days=30;all=0;showedit=0;full=1 Tech Emacs #Blog
+https://morss.it/https://planet.emacslife.com/atom.xml Tech Emacs
+https://xeiaso.net/blog.rss Tech Nix Blog
+https://morss.it/https://www.phoronix.com/rss.php Blog
+https://hackaday.com/feed/ Blog
+https://itsfoss.com/rss/ Blog
+https://blog.rust-lang.org/feed.xml Blog Rust Programming
+https://thelinuxexp.com/feed.xml Blog
+https://dev.to/feed Blog Programming
+https://dev.to/feed/tag/rust Blog Programming Rust
+https://dev.to/feed/tag/python Blog Programming
+https://dev.to/feed/tag/cpp Blog Programming
+https://zettelkasten.de/feed.atom Blog Notes
+#Updates
+https://github.com/void-linux/void-packages/commits/master.atom Updates "~void-packages"
+https://github.com/NixOS/nixpkgs/commits/master.atom Updates "~nixpkgs"
+#News
+https://morss.it/https://gazetawroclawska.pl/rss/gazetawroclawska.xml Wrocław
+https://morss.it/https://www.wroclaw.pl/dla-mieszkanca/rss/ Wrocław
+https://morss.it/https://www.wroclaw.pl/kultura/rss/ Wrocław Culture
+https://morss.it/https://www.wroclaw.pl/komunikacja/rss/ Wrocław
+https://dcf.wroclaw.pl/feed/ Wrocław Culture
+https://konwenty-poludniowe.pl/?format=feed&type=atom Culture
+#Reddit
+https://reddit.com/r/unixporn.rss Reddit "~r/unixporn"
+https://reddit.com/r/workspaces.rss Reddit "~r/workspaces"
+https://reddit.com/r/battlestations.rss Reddit "~r/battlestations"
+https://reddit.com/r/learnprogramming.rss Reddit "~r/learnprogramming"
+https://reddit.com/r/MechanicalKeyboards.rss Reddit "~r/MechanicalKeyboards"

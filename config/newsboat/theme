@@ -1,0 +1,21 @@
+color article                                       color15  color235
+color background                                    color2   color235
+color info                                          color2   color235
+color listfocus                                     color15  color8   bold
+color listfocus_unread                              color15  color8   bold
+color listnormal                                    color8   color235
+color listnormal_unread                             color6   color235
+highlight article "^Feed:.*"                        color14  color235
+highlight article "^Title:.*"                       color11  color235 bold
+highlight article "^Author:.*"                      color13  color235
+highlight article "^Link:.*"                        color12  color235
+highlight article "^Links:.*"                       color12  color235
+highlight article "\\[[0-9]\\]:.*"                  color3   color235 bold
+highlight article "^Podcast Download URL:.*"        color12  color235
+highlight article "^\\[image.*"                     color14  color235
+highlight article "^https://.*"                     color12  color235
+highlight article "^http://.*"                      color12  color235
+highlight article "^Date:.*"                        color10  color235
+highlight article "\\*\ "                           color13  color235 bold
+highlight article "\\[[0-9]\\+\\]"                  color3   color235 bold
+highlight article "\\[[^0-9].*[0-9]\\+\\]"          color13  color235 bold

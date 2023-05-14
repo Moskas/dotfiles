@@ -1,0 +1,160 @@
+format = """
+$os\
+$username\
+$hostname\
+$rust$python$node$lua\
+$git_branch$git_status$git_state\
+$cmd_duration\
+$fill\
+$time\
+$line_break\
+$directory$sudo$character
+"""
+add_newline = false
+palette = "gruvbox"
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+format = '[ 󰅐 $time ]($style)'
+time_format = "%T"
+style ="bold fg:magenta bg:dark-gray"
+
+[cmd_duration]
+min_time = 500
+format = '[ took $duration ](bold fg:bg bg:dark-green)'
+
+
+[character]
+success_symbol = "[󰘧](bold green)"
+error_symbol = "[](bold red)"
+
+[sudo]
+style = "bold red"
+symbol = " "
+format = "[$symbol]($style)"
+disabled = false
+
+[username]
+style_user = "fg:bg bg:dark-blue bold"
+style_root = "green bold"
+format = "[ $user ]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[ $ssh_symbol](bold fg:blue bg:blue)[$hostname ](bold fg:bg bg:blue)"
+trim_at = ".companyname.com"
+disabled = false
+
+[os]
+disabled = false
+style = "bg:dark-gray"
+
+[os.symbols]
+Arch =  "[   ](fg:blue $style)"
+NixOS = "[   ](fg:blue $style)"
+Macos = "[   ](fg:red $style)"
+Linux = "[   ](fg:fg $style)"
+Unknown = "[   ](fg:green $style)"
+
+[palettes.gruvbox]
+fg = "#ebdbb2"
+bg = "#1d2021"
+yellow = "#fabd2f"
+dark-yellow = "#d79921"
+green = "#b8bb26"
+dark-green = "#98971a"
+red = "#fb4932"
+dark-red = "#cc241d"
+magenta = "#d3869b"
+dark-magenta = "#b16286"
+blue = "#83a598"
+dark-blue = "#458588"
+cyan = "#8ec07c"
+dark-cyan = "#689d6a"
+gray = "#666666"
+dark-gray = "#3d3d3d"
+
+[localip]
+ssh_only = false
+format = "@[$localipv4](bold red) "
+disabled = true
+
+[memory_usage]
+disabled = false
+threshold = -1
+symbol = " 󰍛 "
+format = "[$symbol]($style)[$ram( | $swap) ]($style)"
+style = "bold fg:dark-green"
+
+[line_break]
+disabled = false
+
+[c]
+symbol = " "
+detect_extensions = ["c", "h", "cpp"]
+
+[directory]
+read_only = " "
+home_symbol = " ~"
+truncation_length = 4
+truncation_symbol = '…/'
+truncate_to_repo = true
+
+
+[docker_context]
+symbol = " "
+
+[git_branch]
+format = "[ $symbol$branch(:$remote_branch) ](bg:dark-magenta fg:bg bold)"
+symbol = " "
+
+[git_status]
+format='([\[$all_status$ahead_behind\]](bg:dark-magenta fg:bg bold))'
+#up_to_date = '✓'
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+stashed = '📦'
+modified = '📝'
+staged = '+($count)'
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[lua]
+symbol = " "
+format = '[$symbol$version](red bold) '
+
+[meson]
+symbol = "⬢ "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = "📦 "
+
+[python]
+symbol = " "
+format = '[ $symbol$version ](bg:dark-yellow fg:bg bold)'
+
+[rust]
+symbol = "🦀 "
+format = '[ $symbol$version ](bg:dark-yellow fg:bg bold)'
