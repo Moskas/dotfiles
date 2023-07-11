@@ -2,13 +2,13 @@ format = """
 $os\
 $username\
 $hostname\
-$rust$python$node$lua\
+$rust$python$c$nodejs$lua$haskell$nim$java$package\
 $git_branch$git_status$git_state\
 $cmd_duration\
 $fill\
 $time\
 $line_break\
-$directory$sudo$character
+$nix_shell$directory$sudo$character
 """
 add_newline = false
 palette = "gruvbox"
@@ -58,8 +58,8 @@ style = "bg:dark-gray"
 Arch =  "[   ](fg:blue $style)"
 NixOS = "[   ](fg:blue $style)"
 Macos = "[   ](fg:red $style)"
-Linux = "[   ](fg:fg $style)"
-Unknown = "[   ](fg:green $style)"
+Linux = "[   ](fg:green $style)"
+Unknown = "[ ? ](fg:green $style)"
 
 [palettes.gruvbox]
 fg = "#ebdbb2"
@@ -97,6 +97,7 @@ disabled = false
 [c]
 symbol = " "
 detect_extensions = ["c", "h", "cpp"]
+format = '[ $symbol$version ](fg:bg bg:green bold)'
 
 [directory]
 read_only = " "
@@ -110,11 +111,11 @@ truncate_to_repo = true
 symbol = " "
 
 [git_branch]
-format = "[ $symbol$branch(:$remote_branch) ](bg:dark-magenta fg:bg bold)"
 symbol = " "
+format = "[ $symbol$branch(:$remote_branch) ](bg:dark-magenta fg:bg bold)"
 
 [git_status]
-format='([\[$all_status$ahead_behind\]](bg:dark-magenta fg:bg bold))'
+format='([\[$all_status$ahead_behind\] ](bg:dark-magenta fg:bg bold))'
 #up_to_date = '✓'
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
@@ -125,31 +126,37 @@ staged = '+($count)'
 
 [haskell]
 symbol = " "
+format = '[ $symbol$version ](fg:bg bg:magenta bold)'
 
 [hg_branch]
 symbol = " "
 
 [java]
 symbol = " "
+format = '[ $symbol$version ](fg:bg bg:red bold)'
 
 [lua]
 symbol = " "
-format = '[$symbol$version](red bold) '
+format = '[ $symbol$version ](fg:bg bg:dark-cyan bold)'
 
 [meson]
 symbol = "⬢ "
 
 [nim]
-symbol = " "
+symbol = " "
+format = '[ $symbol$version ](fg:bg bg:yellow bold)'
 
 [nix_shell]
 symbol = " "
+format = '[ $symbol ](fg:bg bg:blue bold)'
 
 [nodejs]
 symbol = " "
+format='[ $symbol$version ](fg:bg bg:green bold)'
 
 [package]
 symbol = "📦 "
+format = '[ $symbol$version ](fg:bg bg:dark-red bold)'
 
 [python]
 symbol = " "

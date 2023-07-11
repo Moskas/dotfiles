@@ -13,9 +13,11 @@ highlight article "^Links:.*"                       color12  color235
 highlight article "\\[[0-9]\\]:.*"                  color3   color235 bold
 highlight article "^Podcast Download URL:.*"        color12  color235
 highlight article "^\\[image.*"                     color14  color235
+highlight article "\\ \\[image*\\]\\ "                     color14  color235
 highlight article "^https://.*"                     color12  color235
 highlight article "^http://.*"                      color12  color235
 highlight article "^Date:.*"                        color10  color235
 highlight article "\\*\ "                           color13  color235 bold
+highlight article "\\[0-9]\\.\ "                           color13  color235 bold
 highlight article "\\[[0-9]\\+\\]"                  color3   color235 bold
 highlight article "\\[[^0-9].*[0-9]\\+\\]"          color13  color235 bold

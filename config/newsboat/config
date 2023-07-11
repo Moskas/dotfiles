@@ -4,7 +4,8 @@ refresh-on-startup yes
 reload-threads 100
 
 # external programs
-browser "firefox --new-tab %u"
+#browser "firefox --new-tab %u"
+browser "qutebrowser %u"
 player "mpv"
 
 bind-key RIGHT open
@@ -23,4 +24,4 @@ macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-brows
 show-read-feeds yes
 show-read-articles yes
 notify-always yes
-notify-program "~/usr/bin/notify-send"
+notify-program "~/usr/bin/dunst"

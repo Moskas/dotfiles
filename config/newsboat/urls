@@ -1,16 +1,49 @@
 "query:Blogs:tags # \"Blog\""
-"query:Reddit:tags # \"Reddit\""
+#"query:Reddit:tags # \"Reddit\""
 "query:Youtube:tags # \"Youtube\""
 "query:Odysee:tags # \"Odysee\""
 "query:Piped:tags # \"Piped\""
+"query:Twitch:tags # \"Twitch\""
 "query:Wrocław:tags # \"Wrocław\""
 "query:Programming:tags # \"Programming\""
 
+#Jobs
+https://justjoin.it/feed.atom
 #Videos
 ##Youtube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCMiyV_Ib77XLpzHPQH_q0qQ Youtube "~Veronica Explains"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg Youtube "~Wolfgang"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw Youtube "~TheLinuxExperiment"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCR-DXc1voovS8nhAvccRZhg Youtube "~Jeff Geerling"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9x0AN7BWHpCDHSm9NiJFJQ Youtube "~Network Chuck"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCruD32HAzsb9UN4KpOcSxZg Youtube "~London Eats"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCC_NjLEb2Sley94py4vSYTA Youtube "~Andres Vidoza"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCeOouRs24EmbFPdgEghtRZQ Youtube "~Jon Imperial"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCEfopmnijwEA9sCOD_hfRtA Youtube "~Michael Soledad"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6vOAOQUX2v1dlDj5YLoJ5g Youtube "~Aivars Meijers"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCCQ6SXMc7MoJ88jjpn6j-8Q Youtube "~Marko"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnn3N0i3TVGbQ9bMb4ln2OQ Youtube "~Kyle Erickson"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCoOae5nYA7VqaXzerajD0lg Youtube "~Ali Abdaal"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ Youtube "~System Crafters"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCgDqL4yzXb4BflimZaxL4Vg Youtube "~Andrew E.Zeng"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2hi12ngz1aiGv_vditVHGw Youtube "~Brandon Boswell"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCvfUcuSDNOoFsAPsiGdaGPg Youtube "~Notebook Check"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA Youtube "~Learn Linux TV"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCLuJuI0M95qWsVw_KQOkTgQ Youtube "~Pinsplash"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJ6KZTTnkE-s2XFJJmoTAkw Youtube "~Accursed Farms"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXuqSBlHAE6Xw-yeJA0Tunw Youtube "~LinusTechTips"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCjREVt2ZJU8ql-NC9Gu-TJw Youtube "~Code to the Moon"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCNhWSOlt_UoCzS2YSMhHYmA Youtube "~Kai Notebook"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCLx053rWZxCiYWsBETgdKrQ Youtube "~LGR"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8uT9cgJorJPWu7ITLGo9Ww Youtube "~The 8-Bit Guy"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCerEIdrEW-IqwvlH8lTQUJQ Youtube "~Tech Tangents"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCoL8olX-259lS1N6QPyP4IQ Youtube "~Action Retro"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7yZ6keOGsvERMp2HaEbbXQ Youtube "~devaslife"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0lE_IPPXhb_J9sZnMyIEwA Youtube "~llll colonq"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA Youtube "~No Boilerplate"
+#https://www.youtube.com/feeds/videos.xml?channel_id= Youtube "~"
+#https://www.youtube.com/feeds/videos.xml?channel_id= Youtube "~"
+#https://www.youtube.com/feeds/videos.xml?channel_id= Youtube "~"
 ##Odysee
 https://odysee.com/$/rss/@Urbandoned:5 Odysee "~Urbandoned"
 https://odysee.com/$/rss/@AlphaNerd:8 Odysee "~Mental Outlaw"
@@ -26,7 +59,12 @@ https://odysee.com/$/rss/@adriansdigitalbasement:f Odysee "~Adrian's DB"
 https://odysee.com/$/rss/@mechtechkeyboards:b Odysee "~Mechkeyboards" Tech Keyboards
 https://odysee.com/$/rss/@michaelnr0h:7 Odysee "~Michael Horn"
 https://odysee.com/$/rss/@fireship:6 Odysee "~Fireship" Tech Programming
+https://odysee.com/$/rss/@internetczasdzialac:6 Odysee "~Internet. Czas działać!" Tech
+https://odysee.com/$/rss/@bryce:c Odysee "~Bryce Vandegrift"
+https://odysee.com/$/rss/@EmMerge:f Odysee "~Emilia Emerge"
+https://odysee.com/$/rss/@GavinFreeborn:d Odysee "~Gavin Freeborn"
 ##Piped
+https://pipedapi.kavin.rocks/feed/rss?authToken=5f754893-4492-46a1-8d5a-bfbeb8def939 Piped
 https://pipedapi.kavin.rocks/feed/unauthenticated/rss?channels=UCBJycsmduvYEL83R_U4JriQ Piped
 #Blog
 https://emacsredux.com/atom.xml Tech Emacs Blog
@@ -40,12 +78,31 @@ https://hackaday.com/feed/ Blog
 https://itsfoss.com/rss/ Blog
 https://blog.rust-lang.org/feed.xml Blog Rust Programming
 https://thelinuxexp.com/feed.xml Blog
-https://dev.to/feed Blog Programming
+#https://dev.to/feed Blog Programming
 https://dev.to/feed/tag/rust Blog Programming Rust
 https://dev.to/feed/tag/python Blog Programming
 https://dev.to/feed/tag/cpp Blog Programming
 https://zettelkasten.de/feed.atom Blog Notes
+https://morss.it/https://cult.honeypot.io/rss.xml Blog Programming
+https://blog.phundrak.com/index.xml Blog Tech
+https://vermaden.wordpress.com/feed Blog Tech
+https://morss.it/https://fasterthanli.me/index.xml Blog Tech
+https://morss.it/https://aliabdaal.com/feed/ Blog
+https://programmershideaway.xyz/atom.xml Blog
+https://www.jeffgeerling.com/blog.xml Blog
+https://ploum.net/atom_en.xml Blog
+#Twitch?
+https://twitchrss.appspot.com/vod/kycu Twitch "~Kycu"
+https://twitchrss.appspot.com/vod/slayproxx Twitch "~Slay"
+https://twitchrss.appspot.com/vod/cirno_tv Twitch "~Cirno"
+https://twitchrss.appspot.com/vod/lcolonq Twitch "~lcolonq"
+https://twitchrss.appspot.com/vod/yukievt Twitch "~yukievt"
+https://twitchrss.appspot.com/vod/enlynn_ Twitch "~enlynn_"
+#https://twitchrss.appspot.com/vod/cirno_tv Twitch
+#https://twitchrss.appspot.com/vod/cirno_tv Twitch
 #Updates
+https://archlinux.org/feeds/packages/ Updates "~archpkgs"
+https://archlinux.org/feeds/news/ Updates
 https://github.com/void-linux/void-packages/commits/master.atom Updates "~void-packages"
 https://github.com/NixOS/nixpkgs/commits/master.atom Updates "~nixpkgs"
 #News
@@ -55,6 +112,8 @@ https://morss.it/https://www.wroclaw.pl/kultura/rss/ Wrocław Culture
 https://morss.it/https://www.wroclaw.pl/komunikacja/rss/ Wrocław
 https://dcf.wroclaw.pl/feed/ Wrocław Culture
 https://konwenty-poludniowe.pl/?format=feed&type=atom Culture
+https://www.internet-czas-dzialac.pl/rss Tech
+https://morss.it/https://www.theregister.com/headlines.atom Tech
 #Reddit
 https://reddit.com/r/unixporn.rss Reddit "~r/unixporn"
 https://reddit.com/r/workspaces.rss Reddit "~r/workspaces"
